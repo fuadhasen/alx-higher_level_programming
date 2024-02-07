@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # 102-square.py
-# fuadhasen
+# fuad hasen
 """Define a class Square."""
 
 
@@ -54,4 +54,4 @@ class Square:
 
     def __ge__(self, other):
         """Define the >= compmarison to a Square."""
-       ireturn self.area() >= other.area()
+        return self.area() >= other.area()
