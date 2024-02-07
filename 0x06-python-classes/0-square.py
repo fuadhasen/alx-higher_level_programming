@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # 0-square.py
 # fuadhasen
 """define class"""
