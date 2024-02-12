@@ -1,0 +1,152 @@
+# 0-add_integer test file
+
+=============================
+how to use 0-add_integer.py
+=============================
+
+it has one function called ``add_intege(a,b=98)``
+
+Numbers
+=================
+'add_integer' return sum of its argument using + operator
+
+in order to pass python naming restriction and get access to module
+::
+
+    >>> from importlib.machinery import SourceFileLoader
+    >>> add_module = SourceFileLoader('0-add_integer', './0-add_integer.py').load_module()
+    >>> add_integer = add_module.add_integer
+    >>> add_integer(1, 2)
+    3
+
+::
+
+    >>> add_integer(100, -2)
+    98
+
+::
+
+    >>> add_integer(-2, 100)
+    98
+
+::
+
+    >>> add_integer(-100, -2)
+    -102
+
+for single argument
+::
+
+    >>> add_integer(2)
+    100
+
+Floating Point test case
+int with float
+::
+
+    >>> add_integer(100.3, 2)
+    102
+
+::
+
+    >>> add_integer(-2, 100.3)
+    98
+
+::
+
+    >>> add_integer(2, -100.3)
+    -98
+
+::
+
+    >>> add_integer(100.3, -2)
+    98
+
+::
+
+    >>> add_integer(-100.3, 2)
+    -98
+
+::
+
+    >>> add_integer(2, 100.3)
+    102
+
+both are float
+::
+
+    >>> add_integer(-100.3, -2.3)
+    -102
+
+::
+
+    >>> add_integer(2.0, 100.0)
+    102
+
+::
+
+    >>> add_integer(-2.0, 100.0)
+    98
+
+Large Number Test
+::
+
+    >>> add_integer(1e100, 2)
+    10000000000000000159028911097599180468360808563945281389781327557747838772170381060813469985856815106
+
+Non Numbers
+================================
+`0-add-integer` for none integers
+
+Nan case
+::
+
+    >>> add_integer(3, float('nan')) # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integeri
+
+::
+
+    >>> add_integer(float('nan'), 3) # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
+infinfty case
+::
+
+    >>> add_integer(2, float('inf')) # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+::
+
+    >>> add_integer(float('inf'), 2) # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+it work also for None parameters
+::
+
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    TypeError: a must be integer
+
+Empty parameters
+::
+
+    >>> add_integer() # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Prameter is string 
+::
+
+    >>> add_integer(4, "school")
+    Traceback (most recent call last):
+    TypeError: b must be integer
+
+::
+
+    >>> add_integer("school", 4)
+    Traceback (most recent call last):
+    TypeError: a must be integer

@@ -1,0 +1,162 @@
+# 2-matrix_divided test file
+
+=============================
+how to use 2-matrix_divided.py
+=============================
+
+it has one function called ``matrix_divided(matrix, div)``
+
+div Test
+========================
+
+'matrix_divided' return sum of its argument using + operator
+
+in order to pass python naming restriction and get access to module
+::
+
+    >>> from importlib.machinery import SourceFileLoader
+    >>> matrix = SourceFileLoader('2-matrix_divided', './2-matrix_divided.py').load_module()
+    >>> matrix_divided = matrix.matrix_divided
+    >>> matrix = [
+    ...     [1, 2, 3],
+    ...     [4, 5, 6]
+    ... ]
+
+Test the second argument div with int and float possibility
+::
+
+    >>> matrix_divided(matrix, 3)
+    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+::
+
+    >>> matrix_divided(matrix, -3)
+    [[-0.33, -0.67, -1.0], [-1.33, -1.67, -2.0]]
+
+::
+
+    >>> matrix_divided(matrix, 3.0)
+    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+::
+
+    >>> matrix_divided(matrix, -3.0)
+    [[-0.33, -0.67, -1.0], [-1.33, -1.67, -2.0]]
+
+::
+
+    >>> matrix_divided(matrix, 0) # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    ZeroDivisionError: division by zero
+
+div other than int and float
+::
+
+    >>> matrix_divided(matrix, 'sitole') # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    TypeError: div must be a number
+
+with out div argument
+::
+
+    >>> matrix_divided(matrix) # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+Extrem value of div
+::
+
+    >>> matrix_divided(matrix, float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+::
+
+    >>> matrix_divided(matrix, float('nan')) # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
+::
+
+    >>> matrix_divided(matrix, None)
+    Traceback (most recent call last):
+    TypeError: div must be a number
+
+matrix Test
+==========================
+
+matrix but not list of list
+::
+
+    >>> matrix = [1, 2, 3, 4]
+    >>> matrix_divided(matrix, 3) # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+::
+
+    >>> matrix = 10
+    >>> matrix_divided(matrix, 3) # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+matrix is list of list but it element are not int or float
+::
+
+    >>> matrix = [
+    ...     ['a', 2, 3],
+    ...     [4, 'b', 5]
+    ... ]
+    >>> matrix_divided(matrix, 3) # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+::
+
+    >>> matrix = [
+    ...     [4, 1, 2],
+    ...     [3, 4, 5, 6]
+    ... ]
+    >>> matrix_divided(matrix, 3)
+    Traceback (most recent call last):
+    TypeError: Each row of the matrix must have the same size
+
+::
+
+    >>> matrix_divided(None, 3)  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Empty matrix
+::
+
+    >>> matrix = []
+    >>> matrix_divided(matrix, 3)
+    []
+
+::
+
+    >>> matrix = [
+    ...     [-1, -2, 4],
+    ...     [3, -3, 0]
+    ... ]
+    >>> matrix_divided(matrix, 3)
+    [[-0.33, -0.67, 1.33], [1.0, -1.0, 0.0]]
+
+Float element of the matrix
+::
+
+    >>> matrix = [
+    ...     [1.2, 4.0, 6.0],
+    ...     [3, 2.9, 5]
+    ... ]
+    >>> matrix_divided(matrix, 3)
+    [[0.4, 1.33, 2.0], [1.0, 0.97, 1.67]]
+
+::
+
+    >>> matrix = [
+    ...     [1, 2, 3, 4]
+    ... ]
+    >>> matrix_divided(matrix, 3)
+    [[0.33, 0.67, 1.0, 1.33]]
