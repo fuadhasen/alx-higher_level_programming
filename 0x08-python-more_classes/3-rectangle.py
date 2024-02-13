@@ -57,3 +57,16 @@ class Rectangle:
             return 0
         res = self.__width + self.__height
         return 2 * res
+
+    def __str__(self):
+        """return printable string (#) to the user. """
+        if self.__height == 0 or self.__width == 0:
+            return ""
+
+        res = ""
+        for i in range(0, self.__height):
+            for j in range(0, self.__width):
+                res += "#"
+            if i != self.__height - 1:
+                res += '\n'
+        return res
