@@ -62,6 +62,19 @@ class Rectangle:
         res = self.__width + self.__height
         return 2 * res
 
+    @classmethod
+    def square(cls, size=0):
+        """return new instance with width == height == size.
+
+        Args:
+            cls (class): Rectangle
+            size (int): dimension.
+
+        Returns:
+            new instance of rectangle class
+        """
+        return (cls(size, size))
+
     def __str__(self):
         """return printable string (#) to the user. """
         if self.__height == 0 or self.__width == 0:
@@ -109,20 +122,3 @@ class Rectangle:
             return rect_1
         else:
             return rect_2
-
-    @classmethod
-    def square(cls, size=0):
-        """return new instance with width == height == size.
-
-        Args:
-            cls (class): Rectangle
-            size (int): dimension.
-
-        Returns:
-            new instance of rectangle class
-        """
-        if not isinstance(size, int):
-            raise Exception
-        if size < 0:
-            raise Exception
-        return (cls(size, size))
