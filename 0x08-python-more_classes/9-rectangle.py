@@ -121,4 +121,8 @@ class Rectangle:
         Returns:
             new instance of rectangle class
         """
+        if not isinstance(size, int):
+            raise TypeError
+        if size < 0:
+            raise ValueError
         return (cls(size, size))
