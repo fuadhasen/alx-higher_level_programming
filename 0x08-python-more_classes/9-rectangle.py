@@ -121,5 +121,7 @@ class Rectangle:
         Returns:
             new instance of rectangle class
         """
+        if not isinstance(size, int):
+            size = int(size)
         new = cls(size, size)
         return new
