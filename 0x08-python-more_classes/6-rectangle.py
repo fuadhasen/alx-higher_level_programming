@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 # fuad hassen
-# 5-rectangle.py
+# 6-rectangle.py
 """ This module define class Rectangle """
 
 
 class Rectangle:
     """ Rectangle class. """
+
+    number_of_instances = 0
 
     def __init__(self, width=0, height=0):
         """ intialize constructor.
@@ -16,6 +18,7 @@ class Rectangle:
         """
         self.width = width
         self.height = height
+        type(self).number_of_instances += 1
 
     @property
     def width(self):
@@ -79,4 +82,5 @@ class Rectangle:
         """delete the instance and say Bye rectangle... """
         del self.__height
         del self.__width
+        type(self).number_of_instances -= 1
         print("Bye rectangle...")
