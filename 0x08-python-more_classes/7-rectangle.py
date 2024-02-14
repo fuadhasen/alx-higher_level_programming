@@ -70,7 +70,7 @@ class Rectangle:
         res = ""
         for i in range(0, self.__height):
             for j in range(0, self.__width):
-                if isinstance(self.print_symbol, list):
+                if not isinstance(self.print_symbol, str):
                     res += str(self.print_symbol)
                 else:
                     res += self.print_symbol
