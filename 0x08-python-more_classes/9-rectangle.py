@@ -122,7 +122,7 @@ class Rectangle:
             new instance of rectangle class
         """
         if not isinstance(size, int):
-            raise TypeError
+            raise Exception
         if size < 0:
-            raise ValueError
+            raise Exception
         return (cls(size, size))
