@@ -121,7 +121,11 @@ class Rectangle:
         Returns:
             new instance of rectangle class
         """
-        if not isinstance(size, int):
-            size = int(size)
-        new = cls(size, size)
-        return new
+        if isinstance(size, int):
+            if size > 0:
+                new = cls(size, size)
+                return new
+            else:
+                ValueError("Size must be a positive")
+        else:
+            raise ValueError("Size must be a integer")
