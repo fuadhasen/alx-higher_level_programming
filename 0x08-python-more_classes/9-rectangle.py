@@ -126,6 +126,6 @@ class Rectangle:
                 new = cls(size, size)
                 return new
             else:
-                ValueError("Size must be a positive")
+                raise Exception
         else:
-            raise ValueError("Size must be a integer")
+            raise Exception
