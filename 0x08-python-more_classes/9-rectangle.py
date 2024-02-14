@@ -121,11 +121,4 @@ class Rectangle:
         Returns:
             new instance of rectangle class
         """
-        if isinstance(size, int):
-            if size > 0:
-                new = cls(size, size)
-                return new
-            else:
-                raise Exception
-        else:
-            raise Exception
+        return (cls(size, size))
