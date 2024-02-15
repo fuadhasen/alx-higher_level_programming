@@ -65,3 +65,14 @@ String Test
     <BLANKLINE>
     And another test.
     <BLANKLINE>
+
+::
+
+    >>> text_indentation("Holberton. School? How are you: John") # doctest: +NORMALIZE_WHITESPACE
+    Holberton.
+    <BLANKLINE>
+    School?
+    <BLANKLINE>
+    How are you:
+    <BLANKLINE>
+    John
