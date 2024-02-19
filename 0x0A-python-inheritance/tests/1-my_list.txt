@@ -1,0 +1,58 @@
+# test file
+
+=================================
+how to use 1-my_list.py
+=================================
+
+it has one function called ``def print_sorted(self):``
+
+Numbers
+===================
+print_sorted(self)  print the sorted version of the list
+
+Import the file
+::
+
+    >>> MyList = __import__('1-my_list').MyList
+    >>> my_list = MyList([6, 4, 9, 3])
+    >>> print(my_list)
+    [6, 4, 9, 3]
+
+::
+
+    >>> my_list.print_sorted()
+    [3, 4, 6, 9]
+
+Test after sorting but not change the orignal
+::
+
+    >>> print(my_list)
+    [6, 4, 9, 3]
+
+check negative elements
+::
+
+    >>> my_list = MyList([6, -4, -9, 3])
+    >>> my_list.print_sorted()
+    [-9, -4, 3, 6]
+
+Float element test
+::
+
+    >>> my_list = MyList([6, -4.8, -9.0, 3])
+    >>> my_list.print_sorted()
+    [-9.0, -4.8, 3, 6]
+
+Especial Cases
+::
+
+    >>> my_list = MyList()
+    >>> my_list.print_sorted()
+    []
+
+::
+
+    >>> my_list = MyList([6, '4', 9, 3])
+    >>> my_list.print_sorted() # doctes: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    TypeError: '<' not supported between instances of 'str' and 'int'
