@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module povide a function that check obj 
+"""This module povide a function that check obj
    is instance of class inherited from  parent class."""
 
 
