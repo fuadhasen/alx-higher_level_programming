@@ -14,12 +14,28 @@ Import the file
 ::
 
     >>> MyList = __import__('1-my_list').MyList
-    >>> my_list = MyList([6, 4, 9, 3])
+    >>> my_list = MyList()
+    >>> my_list.append(1)
+    >>> my_list.append(4)
+    >>> my_list.append(0)
+    >>> my_list.append(50)
     >>> print(my_list)
-    [6, 4, 9, 3]
+    [1, 4, 0, 50]
 
 ::
 
+    >>> my_list.print_sorted()
+    [0, 1, 4, 50]
+
+chech after sort print
+::
+
+    >>> print(my_list)
+    [1, 4, 0, 50]
+
+::
+
+    >>> my_list = MyList([6, 4, 9, 3])
     >>> my_list.print_sorted()
     [3, 4, 6, 9]
 
