@@ -82,6 +82,12 @@ STRING and Invalid type check
     Traceback (most recent call last):
     TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
+::
+
+    >>> bg.integer_validator("my_int", True) # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    TypeError: my_int must be an integer
+
 Test Area function
 ==============================
 
