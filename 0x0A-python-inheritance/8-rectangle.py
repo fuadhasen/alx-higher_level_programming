@@ -1,19 +1,6 @@
 #!/usr/bin/python3
 """ Module provide  class BaseGeometry and subclass rectangle """
-
-
-class BaseGeometry:
-    """ class provide function. """
-    def area(self):
-        """ function area raise Exception."""
-        raise Exception("area() is not implemented")
-
-    def integer_validator(self, name, value):
-        """ Validate the value. """
-        if not isinstance(value, int) or value is True or value is False:
-            raise TypeError("{} must be an integer".format(name))
-        if value <= 0:
-            raise ValueError("{} must be greater than 0".format(name))
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
