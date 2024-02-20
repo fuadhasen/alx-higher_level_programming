@@ -19,6 +19,13 @@ Import the file
 
 ::
 
+    >>> bg.integer_validator("my_int", True) +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    TypeError: my_int must be an integer
+    
+
+::
+
     >>> bg.integer_validator("my_int", -12) # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
     ValueError: my_int must be greater than 0
@@ -69,10 +76,6 @@ STRING and Invalid type check
     >>> bg.integer_validator("my_int", {1, 0}) # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
     TypeError: my_int must be an integer
-
-::
-
-    >>> bg.integer_validator("my_int", True)
 
 ::
 
