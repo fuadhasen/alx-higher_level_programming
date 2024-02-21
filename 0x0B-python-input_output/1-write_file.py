@@ -3,6 +3,7 @@
 
 
 def write_file(filename="", text=""):
-    """function that read file."""
+    """function that write file."""
     with open(filename, "w") as f:
-        f.write(text)
+        nb = f.write(text)
+    return nb
