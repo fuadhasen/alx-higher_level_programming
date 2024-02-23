@@ -6,7 +6,7 @@ load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
 filename = "add_item.json"
 ls = load_from_json_file(filename)
-if ls == None:
+if ls is None:
     ls = []
 for i in range(1, len(sys.argv)):
     ls.append(sys.argv[i])
