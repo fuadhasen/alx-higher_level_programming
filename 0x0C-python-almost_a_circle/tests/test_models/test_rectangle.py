@@ -24,4 +24,4 @@ class test_rectangle(unittest.TestCase):
         self.assertEqual(r.id, 8)
     def test_all(self):
         rl = Rectangle(10, 2, 3, 4, 12)
-        self.assertEqual(rl.id, 12)  
+        self.assertEqual(rl.id, 12)
