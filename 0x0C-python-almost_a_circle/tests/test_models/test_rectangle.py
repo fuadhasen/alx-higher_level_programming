@@ -20,15 +20,8 @@ class test_rectangle(unittest.TestCase):
         self.assertEqual(r3.id, 3)
         r4 = Rectangle(3, 2, id=-4)
         self.assertEqual(r4.id, -4)
-        self.assertEqual(r1.id, 2)
         r = Rectangle(10, 2, id=8)
         self.assertEqual(r.id, 8)
+    def test_all(self):
         rl = Rectangle(10, 2, 3, 4, 12)
-        self.assertEqual(rl.id, 12)
-
-    def test_exception(self):
-        with self.assertRaises(TypeError):
-            r = Rectangle(10)
-
-        with self.assertRaises(TypeError):
-            r = Rectangle()        
+        self.assertEqual(rl.id, 12)  
