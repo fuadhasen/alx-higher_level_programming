@@ -88,29 +88,13 @@ class Rectangle(Base):
         """string representation. """
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x, self.__y, self.__width, self.__height)
 
-    def update(self, *args):
-        """update the args. """
-        list1 = []
-        for arg in args:
-            list1.append(arg)
+    def update(self, *args, **kwargs):
+        """Update the object attributes."""
+        if args:
+            attrs = ['id', 'width', 'height', 'x', 'y']
+            for i, arg in enumerate(args):
+                setattr(self, attrs[i], arg)
 
-        if len(list1) == 1:
-            self.id = list1[0]
-        elif len(list1) == 2:
-            self.id = list1[0]
-            self.__width = list1[1]
-        elif len(list1) == 3:
-            self.id = list1[0]
-            self.__width = list1[1]
-            self.__height = list1[2]
-        elif len(list1) == 4:
-            self.id = list1[0]
-            self.__width = list1[1]
-            self.__height = list1[2]
-            self.__x = list1[3]
-        elif len(list1) == 5:
-            self.id = list1[0]
-            self.__width = list1[1]
-            self.__height = list1[2]
-            self.__x = list1[3]
-            self.__y = list1[4]
+        for key, value in kwargs.items():
+            if hasattr(self, key):
+                setattr(self, key, value)
