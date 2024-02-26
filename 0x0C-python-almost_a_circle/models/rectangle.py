@@ -87,3 +87,30 @@ class Rectangle(Base):
     def __str__(self):
         """string representation. """
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x, self.__y, self.__width, self.__height)
+
+    def update(self, *args):
+        """update the args. """
+        list1 = []
+        for arg in args:
+            list1.append(arg)
+
+        if len(list1) == 1:
+            self.id = list1[0]
+        elif len(list1) == 2:
+            self.id = list1[0]
+            self.__width = list1[1]
+        elif len(list1) == 3:
+            self.id = list1[0]
+            self.__width = list1[1]
+            self.__height = list1[2]
+        elif len(list1) == 4:
+            self.id = list1[0]
+            self.__width = list1[1]
+            self.__height = list1[2]
+            self.__x = list1[3]
+        elif len(list1) == 5:
+            self.id = list1[0]
+            self.__width = list1[1]
+            self.__height = list1[2]
+            self.__x = list1[3]
+            self.__y = list1[4]
