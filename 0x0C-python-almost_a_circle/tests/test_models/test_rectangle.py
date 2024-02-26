@@ -7,6 +7,7 @@ class test_rectangle(unittest.TestCase):
 
     def setUp(self):
         Base._Base__nb_object = 0
+        print("hello set up")
 
     def tearDown(self):
         pass
@@ -28,5 +29,5 @@ class test_rectangle(unittest.TestCase):
         self.assertEqual(rl.id, 12)
 
     def test_area(self):
-        r2 = Rectangle(3, 2, id=2)
-        self.assertEqual(r2.area(), 6)
+        r4 = Rectangle(2, 3, 3, 4, 9)
+        self.assertEqual(r4.area(), 6)
