@@ -13,34 +13,42 @@ class Rectangle(Base):
         self.y = y
         super().__init__(id)
 
-    def width(self, width):
-        """setter of width."""
-        self.__width = width
-
+    @property
     def width(self):
         """getter of width. """
         return self.__width
 
-    def height(self, height):
-        """setter of height."""
-        self.__height = height
+    @width.setter
+    def width(self, width):
+        """setter of width."""
+        self.__width = width
 
+    @property
     def height(self):
         """getter of height. """
         return self.__height
 
-    def x(self, x):
-        """setter of x."""
-        self.__x = x
+    @height.setter
+    def height(self, height):
+        """setter of height."""
+        self.__height = height
 
-    def x(self):
-        """getter of x. """
-        return self.__x
+    @property
+    def y(self):
+        """getter of y. """
+        return self.__y
 
+    @y.setter
     def y(self, y):
         """setter of y."""
         self.__y = y
 
-    def y(self):
-        """getter of y. """
-        return self.__y
+    @property
+    def x(self):
+        """getter of x. """
+        return self.__x
+
+    @x.setter
+    def x(self, x):
+        """setter of x."""
+        self.__x = x
