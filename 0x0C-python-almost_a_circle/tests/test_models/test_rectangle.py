@@ -23,6 +23,8 @@ class test_rectangle(unittest.TestCase):
         self.assertEqual(r1.id, 2)
         r = Rectangle(10, 2, id=8)
         self.assertEqual(r.id, 8)
+        rl = Rectangle(10, 2, 3, 4, 12)
+        self.assertEqual(rl.id, 12)
 
     def test_exception(self):
         with self.assertRaises(TypeError):
