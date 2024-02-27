@@ -20,9 +20,4 @@ class Base:
         """ to json representation. """
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
-
-        expected_key = ['id', 'width', 'height', 'x', 'y']
-        for dic in list_dictionaries:
-            if not set(dic.keys()).issubset(expected_key):
-                raise ValueError("there is inconsistency of key")
         return json.dumps(list_dictionaries)
