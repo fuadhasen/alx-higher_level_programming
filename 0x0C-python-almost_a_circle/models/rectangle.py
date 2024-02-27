@@ -101,13 +101,10 @@ class Rectangle(Base):
 
     def to_dictionary(self):
         """return dictionary representation """
-        list1 = []
-        for item in dir(self):
-            if not callable(getattr(self, item)) and not item.startswith("__") and not item.startswith("_"):
-                list1.append(item)
-        _dict = {}
-
-        for i in range(len(list1)):
-            _dict[list1[i]] = getattr(self, list1[i])
-
-        return _dict
+        return {
+            'x': self.x,
+            'y': self.y,
+            'id': self.id,
+            'height': self.height,
+            'width': self.width
+        }
