@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This module provide Base class. """
 import json
+import os
 
 
 class Base:
@@ -54,3 +55,19 @@ class Base:
 
         r.update(**dictionary)
         return r
+
+    @classmethod
+    def load_from_file(cls):
+        """ load from file """
+        filename = cls.__name__ + ".json"
+        if os.path.isfile(filename):
+            with open(filename, "r") as f:
+                json_string = f.read()
+                list_obj = cls.from_json_string(json_string)
+                list_instance = []
+                for list_obj_each in list_obj:
+                    r2 = cls.create(**list_obj_each)
+                    list_instance.append(r2)
+            return list_instance
+        else:
+            return []
