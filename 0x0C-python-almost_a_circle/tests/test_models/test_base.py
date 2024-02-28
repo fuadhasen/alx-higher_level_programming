@@ -5,8 +5,8 @@ from models.base import Base
 class test_base(unittest.TestCase):
 
     def setUp(self):
-        Base._Base__nb_objects = 0
-
+        Base.__nb_objects = 0
+    
     def tearDown(self):
         pass
 
@@ -21,3 +21,9 @@ class test_base(unittest.TestCase):
         self.assertEqual(b4.id, 3)
         b5 = Base(-4)
         self.assertEqual(b5.id, -4)
+
+    def test_type(self):
+        b6 = Base()
+        self.assertEqual(type(b6), Base)
+        b7 = Base(2)
+        self.assertEqual(type(b7), Base)
