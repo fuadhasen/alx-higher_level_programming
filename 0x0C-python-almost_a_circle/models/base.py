@@ -48,7 +48,7 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """ creat instance from dictionary. """
-        if cls == "Square":
+        if cls.__name__ == "Square":
             r = cls(1)
         else:
             r = cls(1, 2)
