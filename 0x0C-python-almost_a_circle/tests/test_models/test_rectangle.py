@@ -1,6 +1,8 @@
 import unittest
 from models.rectangle import Rectangle
 from models.base import Base
+import io
+import sys
 
 
 class test_rectangle(unittest.TestCase):
@@ -62,15 +64,14 @@ class test_rectangle(unittest.TestCase):
             r6 = Rectangle(1, 2, -3)
         self.assertEqual("x must be >= 0", str(x.exception))
 
-        with self.assertRaises(ValueError) as x:
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             r7 = Rectangle(1, 2, 3, -4)
-        self.assertEqual("y must be >= 0", str(x.exception))
-        
-
-        
-
-        
 
     def test_area(self):
         r4 = Rectangle(2, 3, 3, 4, 9)
         self.assertEqual(r4.area(), 6)
+
+    def test_str(self):
+        r = Rectangle(5, 5, 1)
+        self.assertEqual(str(r), "[{}] ({}) {}/{} - {}/{}".format(
+            r.__class__.__name__, r.id, r.x, r.y, r.width, r.height))
