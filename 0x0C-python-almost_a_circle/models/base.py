@@ -50,6 +50,7 @@ class Base:
         if cls == "Square":
             r = cls(1)
         else:
-            r =  cls(1, 2)
+            r = cls(1, 2)
+
         r.update(**dictionary)
         return r
