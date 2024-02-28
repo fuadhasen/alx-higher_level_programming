@@ -23,10 +23,15 @@ class test_rectangle(unittest.TestCase):
         self.assertEqual(r4.id, -4)
         r = Rectangle(10, 2, id=8)
         self.assertEqual(r.id, 8)
+        r9 = Rectangle(10, 2, 3, 4, 12)
+        self.assertEqual(r9.id, 12)
+        r10 = Rectangle(10, 2, 3)
+        self.assertEqual(r10.id, 4)
+        r11 = Rectangle(10, 2, 3, 3)
+        self.assertEqual(r11.id, 5)
+        
 
-    def test_all(self):
-        rl = Rectangle(10, 2, 3, 4, 12)
-        self.assertEqual(rl.id, 12)
+        
 
     def test_area(self):
         r4 = Rectangle(2, 3, 3, 4, 9)
