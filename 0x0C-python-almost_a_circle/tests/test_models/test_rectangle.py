@@ -71,7 +71,42 @@ class test_rectangle(unittest.TestCase):
         r4 = Rectangle(2, 3, 3, 4, 9)
         self.assertEqual(r4.area(), 6)
 
+class test_stdout(unittest.TestCase):
+    def setUp(self):
+        Base._Base__nb_objects = 0
+        print("second set up alew")
+
+    @staticmethod
+    def capture_stdout(rect, method):
+        capture = io.StringIO()
+        sys.stdout = capture
+        if method == "print":
+            print(rect)
+        else:
+            rect.display()
+        sys.stdout = sys.__stdout__
+        return capture
+
     def test_str(self):
-        r = Rectangle(5, 5, 1)
-        self.assertEqual(str(r), "[{}] ({}) {}/{} - {}/{}".format(
-            r.__class__.__name__, r.id, r.x, r.y, r.width, r.height))
+        r = Rectangle(13, 21, 2, 4, 7)
+        self.assertEqual("[Rectangle] (7) 2/4 - 13/21", str(r))
+
+    def test_display_with_position(self):
+        r = Rectangle(3, 5, 0, 1, 0)
+        capture = test_stdout.capture_stdout(r, "display")
+        display = "\n###\n###\n###\n###\n###\n"
+        self.assertEqual(display, capture.getvalue())
+
+    def test_display_without_y(self):
+        r = Rectangle(3, 5, 1)
+        capture = test_stdout.capture_stdout(r, "display")
+        display = " ###\n ###\n ###\n ###\n ###\n"
+        self.assertEqual(display, capture.getvalue())
+    def test_disp_without_xy(self):
+        r = Rectangle(3, 5)
+        capture = test_stdout.capture_stdout(r, "display")
+        display = "###\n###\n###\n###\n###\n"
+        self.assertEqual(display, capture.getvalue())
+
+
+
