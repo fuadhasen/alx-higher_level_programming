@@ -103,10 +103,13 @@ class test_create_Square(unittest.TestCase):
         r = Square.create(**{ 'id': 89, 'size': 1, 'x': 2, 'y': 3 })
         self.assertEqual(r.to_dictionary(),  {'id': 89, 'size': 1, 'x': 2, 'y': 3})
 
-class test_save_to_file(unittest.TestCase):
+class test_save_to_file_Rectangle(unittest.TestCase):
     def test_None(self):
         Rectangle.save_to_file(None)
-        os.path.isfile("Rectangle.json")
+        with open("Rectangle.json", "r") as f:
+            correct = f.read()
+        obj = json.loads(correct)
+        self.assertEqual([], obj)
     
     def test_Empty(self):
         Rectangle.save_to_file([])
@@ -116,8 +119,22 @@ class test_save_to_file(unittest.TestCase):
         self.assertEqual([], obj)
     
     def test_(self):
-        Rectangle.save_to_file([Rectangle(1, 2)])
+        Rectangle.save_to_file([Rectangle(1, 2, 3, 4, 6)])
         with open("Rectangle.json", "r") as f:
             correct = f.read()
         obj = json.loads(correct)
-        self.assertEqual([{'id': 11, 'width': 1, 'height': 2, 'x': 0, 'y': 0}], obj)
+        self.assertEqual([{'id': 6, 'width': 1, 'height': 2, 'x': 3, 'y': 4}], obj)
+    
+class load_from_file_Rectangle(unittest.TestCase):
+    def test_if_file_no_exist(self):
+        correct = Rectangle.load_from_file()
+        self.assertTrue(correct)
+    
+    def test_if_file_exist(self):
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+        Rectangle.save_to_file(list_rectangles_input)
+        correct = Rectangle.load_from_file()
+
+        self.assertEqual(len(correct), len(list_rectangles_input))
