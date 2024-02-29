@@ -118,7 +118,7 @@ class test_save_to_file_Rectangle(unittest.TestCase):
         obj = json.loads(correct)
         self.assertEqual([], obj)
     
-    def test_(self):
+    def test_instance(self):
         Rectangle.save_to_file([Rectangle(1, 2, 3, 4, 6)])
         with open("Rectangle.json", "r") as f:
             correct = f.read()
@@ -127,8 +127,12 @@ class test_save_to_file_Rectangle(unittest.TestCase):
     
 class load_from_file_Rectangle(unittest.TestCase):
     def test_if_file_no_exist(self):
+        filename = "Rectangle.json"
+        if os.path.isfile(filename):
+            os.remove(filename)
+
         correct = Rectangle.load_from_file()
-        self.assertTrue(correct)
+        self.assertEqual([], correct)
     
     def test_if_file_exist(self):
         r1 = Rectangle(10, 7, 2, 8)
@@ -138,3 +142,44 @@ class load_from_file_Rectangle(unittest.TestCase):
         correct = Rectangle.load_from_file()
 
         self.assertEqual(len(correct), len(list_rectangles_input))
+
+class test_save_to_file_Square(unittest.TestCase):
+    def test_None(self):
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            correct = f.read()
+        obj = json.loads(correct)
+        self.assertEqual([], obj)
+    
+    def test_Empty(self):
+        Square.save_to_file([])
+        with open("Square.json", "r") as f:
+            correct = f.read()
+        obj = json.loads(correct)
+        self.assertEqual([], obj)
+    
+    def test_instance(self):
+        Square.save_to_file([Square(1, 2, 3, 4)])
+        with open("Square.json", "r") as f:
+            correct = f.read()
+        obj = json.loads(correct)
+        self.assertEqual([{'id': 4, 'size': 1, 'x': 2, 'y': 3}], obj)
+
+class load_from_file_square(unittest.TestCase):
+    def test_if_file_no_exist(self):
+        filename = "Square.json"
+        if os.path.isfile(filename):
+            os.remove(filename)
+
+        correct = Rectangle.load_from_file()
+        self.assertEqual([], correct)
+    
+    def test_if_file_exist(self):
+        s1 = Square(5)
+        s2 = Square(7, 9, 1)
+        list_squares_input = [s1, s2]
+
+        Square.save_to_file(list_squares_input)
+        correct = Square.load_from_file()
+
+        self.assertEqual(len(correct), len(list_squares_input))
