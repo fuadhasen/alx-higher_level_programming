@@ -117,10 +117,10 @@ class test_update(unittest.TestCase):
         r.update()
         self.assertEqual("[Rectangle] (10) 10/10 - 10/10", str(r))
 
-    def test_update_args_zero(self):
+    def test_update_args_one(self):
         r = Rectangle(10, 10, 10, 10, 10)
-        r.update()
-        self.assertEqual("[Rectangle] (10) 10/10 - 10/10", str(r))
+        r.update(89)
+        self.assertEqual("[Rectangle] (89) 10/10 - 10/10", str(r))
         
     def test_update_args_two(self):
         r = Rectangle(10, 10, 10, 10, 10)
@@ -167,7 +167,9 @@ class test_update(unittest.TestCase):
         r.update(y=5, x=8, id=99, width=1, height=2)
         self.assertEqual("[Rectangle] (99) 8/5 - 1/2", str(r))
 
-
-
+    def test_to_dictionary(self):
+        r = Rectangle(10, 2, 1, 9, 5)
+        correct = {'x': 1, 'y': 9, 'id': 5, 'height': 2, 'width': 10}
+        self.assertDictEqual(correct, r.to_dictionary())
 
 
