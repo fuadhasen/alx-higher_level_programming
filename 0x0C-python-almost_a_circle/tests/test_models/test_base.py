@@ -1,5 +1,6 @@
 import unittest
 from models.base import Base
+from models.rectangle import Rectangle
 
 
 class test_base(unittest.TestCase):
@@ -12,15 +13,21 @@ class test_base(unittest.TestCase):
 
     def test_base_creation(self):
         b1 = Base()
-        self.assertEqual(b1.id, 1)
+        self.assertTrue(b1.id)
+    def test_base_creation__autoId(self):
         b2 = Base()
-        self.assertEqual(b2.id, 2)
-        b3 = Base(4)
-        self.assertEqual(b3.id, 4)
+        b3 = Base()
+        self.assertEqual(b2.id, b3.id - 1)
+
+    def test_Base_None(self):
         b4 = Base(None)
-        self.assertEqual(b4.id, 3)
+        b0 = Base(5)
+        self.assertNotEqual(b4.id, b0.id)
+
+    def test_base_withid(self):
         b5 = Base(-4)
-        self.assertEqual(b5.id, -4)
+        b6 = Base(4)
+        self.assertNotEqual(b5.id, b6.id)
 
     def test_type(self):
         b6 = Base()
@@ -54,3 +61,24 @@ class test_from_json_string(unittest.TestCase):
     def test_to_json_string_object(self):
         b = Base()
         self.assertEqual(b.from_json_string('[{ "id": 89 }]'), [{ 'id': 89 }])
+
+class test_create(unittest.TestCase):
+    def test_creat_withId(self):
+        r = Rectangle.create(**{ 'id': 89 })
+        self.assertEqual(r.to_dictionary(), {'id': 89, 'width': 1, 'height': 2, 'x': 0, 'y': 0})
+
+    def test_creat_width(self):
+        r = Rectangle.create(**{ 'id': 89, 'width': 1 })
+        self.assertEqual(r.to_dictionary(), {'id': 89, 'width': 1, 'height': 2, 'x': 0, 'y': 0})
+    
+    def test_creat_height(self):
+        r = Rectangle.create(**{ 'id': 89, 'width': 1, 'height': 2 })
+        self.assertEqual(r.to_dictionary(), {'id': 89, 'width': 1, 'height': 2, 'x': 0, 'y': 0})
+
+    def test_creat_x(self):
+        r = Rectangle.create(**{ 'id': 89, 'width': 1, 'height': 2, 'x': 3 })
+        self.assertEqual(r.to_dictionary(), {'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 0})
+
+    def test_creat_y(self):
+        r = Rectangle.create(**{ 'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4 })
+        self.assertEqual(r.to_dictionary(), {'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4})
