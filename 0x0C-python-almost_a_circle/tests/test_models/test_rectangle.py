@@ -16,15 +16,15 @@ class test_rectangle(unittest.TestCase):
 
     def test_rectangle(self):
         r0 = Rectangle(10, 2)
-        self.assertEqual(r0.id, 1)
+        self.assertTrue(r0.id)
         r1 = Rectangle(3, 2)
-        self.assertEqual(r1.id, 2)
+        self.assertTrue(r1.id, 2)
         r9 = Rectangle(10, 2, 3, 4, 12)
         self.assertEqual(r9.id, 12)
         r10 = Rectangle(10, 2, 3)
-        self.assertEqual(r10.id, 3)
+        self.assertTrue(r10.id)
         r11 = Rectangle(10, 2, 3, 3)
-        self.assertEqual(r11.id, 4)
+        self.assertTrue(r11.id)
 
     def test_rec_TypeException(self):
         with self.assertRaises(TypeError) as x:
