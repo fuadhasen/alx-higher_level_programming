@@ -105,11 +105,9 @@ class test_create_Square(unittest.TestCase):
 
 class test_save_to_file_Rectangle(unittest.TestCase):
     def test_None(self):
-        Rectangle.save_to_file(None)
+        Square.save_to_file(None)
         with open("Rectangle.json", "r") as f:
-            correct = f.read()
-        obj = json.loads(correct)
-        self.assertEqual([], obj)
+            self.assertEqual("[]", f.read())
     
     def test_Empty(self):
         Rectangle.save_to_file([])
@@ -146,9 +144,7 @@ class test_save_to_file_Square(unittest.TestCase):
     def test_None(self):
         Square.save_to_file(None)
         with open("Square.json", "r") as f:
-            correct = f.read()
-        obj = json.loads(correct)
-        self.assertEqual([], obj)
+            self.assertEqual("[]", f.read())
     
     def test_Empty(self):
         Square.save_to_file([])
