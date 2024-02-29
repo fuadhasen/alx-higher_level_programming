@@ -1,6 +1,7 @@
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
+import os
 
 
 class test_base(unittest.TestCase):
@@ -82,3 +83,16 @@ class test_create(unittest.TestCase):
     def test_creat_y(self):
         r = Rectangle.create(**{ 'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4 })
         self.assertEqual(r.to_dictionary(), {'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4})
+
+class test_save_to_file(unittest.TestCase):
+    def test_None(self):
+        Rectangle.save_to_file(None)
+        os.path.isfile("Rectangle.json")
+    
+    def test_Empty(self):
+        Rectangle.save_to_file([])
+        os.path.isfile("Rectangle.json")
+    
+    def test_(self):
+        Rectangle.save_to_file([Rectangle(1, 2)])
+        os.path.isfile("Rectangle.json")
