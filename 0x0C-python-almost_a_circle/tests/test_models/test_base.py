@@ -27,3 +27,16 @@ class test_base(unittest.TestCase):
         self.assertEqual(type(b6), Base)
         b7 = Base(2)
         self.assertEqual(type(b7), Base)
+
+class test_to_json_string(unittest.TestCase):
+    def test_to_json_string_None(self):
+        b = Base()
+        self.assertEqual(b.to_json_string(None), '[]')
+
+    def test_to_json_string_None(self):
+        b = Base()
+        self.assertEqual(b.to_json_string([]), '[]')
+
+    def test_to_json_string_None(self):
+        b = Base()
+        self.assertEqual(b.to_json_string([ { 'id': 12 }]), '[{"id": 12}]')
