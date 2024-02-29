@@ -130,7 +130,6 @@ class load_from_file_Rectangle(unittest.TestCase):
         filename = "Rectangle.json"
         if os.path.isfile(filename):
             os.remove(filename)
-
         correct = Rectangle.load_from_file()
         self.assertEqual([], correct)
     
@@ -170,8 +169,7 @@ class load_from_file_square(unittest.TestCase):
         filename = "Square.json"
         if os.path.isfile(filename):
             os.remove(filename)
-
-        correct = Rectangle.load_from_file()
+        correct = Square.load_from_file()
         self.assertEqual([], correct)
     
     def test_if_file_exist(self):
