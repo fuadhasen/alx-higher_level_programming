@@ -1,7 +1,9 @@
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
+from models.square import Square
 import os
+import json
 
 
 class test_base(unittest.TestCase):
@@ -63,7 +65,7 @@ class test_from_json_string(unittest.TestCase):
         b = Base()
         self.assertEqual(b.from_json_string('[{ "id": 89 }]'), [{ 'id': 89 }])
 
-class test_create(unittest.TestCase):
+class test_create_Rectangle(unittest.TestCase):
     def test_creat_withId(self):
         r = Rectangle.create(**{ 'id': 89 })
         self.assertEqual(r.to_dictionary(), {'id': 89, 'width': 1, 'height': 2, 'x': 0, 'y': 0})
@@ -84,6 +86,23 @@ class test_create(unittest.TestCase):
         r = Rectangle.create(**{ 'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4 })
         self.assertEqual(r.to_dictionary(), {'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4})
 
+class test_create_Square(unittest.TestCase):
+    def test_creat_withId(self):
+        r = Square.create(**{ 'id': 89 })
+        self.assertEqual(r.to_dictionary(), {'id': 89, 'size': 1, 'x': 0, 'y': 0})
+
+    def test_creat_size(self):
+        r = Square.create(**{ 'id': 89, 'size': 1 })
+        self.assertEqual(r.to_dictionary(),  {'id': 89, 'size': 1, 'x': 0, 'y': 0})
+   
+    def test_creat_x(self):
+        r = Square.create(**{ 'id': 89, 'size': 1, 'x': 2 })
+        self.assertEqual(r.to_dictionary(),  {'id': 89, 'size': 1, 'x': 2, 'y': 0})
+
+    def test_creat_y(self):
+        r = Square.create(**{ 'id': 89, 'size': 1, 'x': 2, 'y': 3 })
+        self.assertEqual(r.to_dictionary(),  {'id': 89, 'size': 1, 'x': 2, 'y': 3})
+
 class test_save_to_file(unittest.TestCase):
     def test_None(self):
         Rectangle.save_to_file(None)
@@ -91,8 +110,14 @@ class test_save_to_file(unittest.TestCase):
     
     def test_Empty(self):
         Rectangle.save_to_file([])
-        os.path.isfile("Rectangle.json")
+        with open("Rectangle.json", "r") as f:
+            correct = f.read()
+        obj = json.loads(correct)
+        self.assertEqual([], obj)
     
     def test_(self):
         Rectangle.save_to_file([Rectangle(1, 2)])
-        os.path.isfile("Rectangle.json")
+        with open("Rectangle.json", "r") as f:
+            correct = f.read()
+        obj = json.loads(correct)
+        self.assertEqual([{'id': 11, 'width': 1, 'height': 2, 'x': 0, 'y': 0}], obj)
