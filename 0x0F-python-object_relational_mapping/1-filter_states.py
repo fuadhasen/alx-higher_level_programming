@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module list all states from DB. """
+"""This module filter  states from DB. """
 import sys
 import MySQLdb
 
@@ -17,12 +17,11 @@ if __name__ == '__main__':
     )
     cur = db.cursor()
 
-    query = """
+    cur.execute("""
         SELECT * FROM states
         where LEFT(name, 1) = "N"
         order by states.id
-    """
-    cur.execute(query)
+    """)
     res = cur.fetchall()
     for row in res:
         print(row)
