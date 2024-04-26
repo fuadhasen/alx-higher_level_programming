@@ -33,4 +33,5 @@ if __name__ == '__main__':
         if row < len(res) - 1:
             print(city_name, end=", ")
         else:
-            print(city_name)
+            print(city_name, end='')
+    print()
