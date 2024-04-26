@@ -29,6 +29,6 @@ if __name__ == '__main__':
     cur.execute(query, (statename,))
     res = cur.fetchall()
     for row in res:
-        city = row[0]
-        print(city, end=", ")
+        city_name = row[0]
+        print(city_name, end=", ")
     print()
