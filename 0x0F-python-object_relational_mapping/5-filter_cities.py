@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module list all cities of specified state from DB. """
+"""This module list all cities from DB. """
 import sys
 import MySQLdb
 
@@ -18,8 +18,8 @@ if __name__ == '__main__':
     )
     cur = db.cursor()
     query = """
-        SELECT cities.name
-        FROM cities
+        Select cities.name
+        From cities
         left join states
         on cities.state_id = states.id
         where states.name = %s
@@ -28,7 +28,9 @@ if __name__ == '__main__':
 
     cur.execute(query, (statename,))
     res = cur.fetchall()
-    for row in res:
-        city_name = row[0]
-        print(city_name, end=", ")
-    print()
+    for row in range(len(res)):
+        city_name = res[row][0]
+        if row < len(res) - 1:
+            print(city_name, end=", ")
+        else:
+            print(city_name)
