@@ -17,8 +17,10 @@ if __name__ == '__main__':
     )
     cur = db.cursor()
     query = """
-        SELECT *
+        SELECT cities.id, cities.name, states.name
         FROM cities
+        left join states
+        on cities.state_id = states.id
         order by cities.id
     """
 
