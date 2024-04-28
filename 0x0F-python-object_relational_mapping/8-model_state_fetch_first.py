@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module list all state objcet using ORM """
+"""This module list first state objcet using ORM """
 
 import sys
 from model_state import Base, State
@@ -20,7 +20,7 @@ if __name__ == '__main__':
     session = Session()
     filter_users = session.query(State).limit(1).all()
 
-    if filter_users is None:
+    if not filter_users:
         print()
     else:
         for state in filter_users:
