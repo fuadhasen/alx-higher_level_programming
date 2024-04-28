@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 """This module list all state objcet using ORM """
 
-import sys
-from model_state import Base, State
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 
 if __name__ == '__main__':
+    import sys
+    from model_state import Base, State
+    from sqlalchemy import create_engine
+    from sqlalchemy.orm import sessionmaker
+
     user_name = sys.argv[1]
     user_passwd = sys.argv[2]
     user_DB = sys.argv[3]
