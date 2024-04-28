@@ -20,10 +20,10 @@ if __name__ == '__main__':
     session = Session()
     filter_users = session.query(State).filter(State.name == state_name).all()
 
-    if not filter_users:
+    if len(filter_users) == 0:
         print("Not found")
     else:
         for state in filter_users:
-             print("{}".format(state.id))
+            print("{}".format(state.id))
 
     session.close()
