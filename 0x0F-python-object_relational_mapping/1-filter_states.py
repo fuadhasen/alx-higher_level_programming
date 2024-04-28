@@ -20,11 +20,11 @@ if __name__ == '__main__':
 
     cur.execute("""
         SELECT * FROM states
-        where LEFT(name, 1) = "N"
         order by states.id
     """)
     res = cur.fetchall()
     for row in res:
-        print(row)
+        if row[1].startswith('N');
+            print(row)
     cur.close()
     db.close()
