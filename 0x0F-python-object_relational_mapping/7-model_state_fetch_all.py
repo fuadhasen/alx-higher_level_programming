@@ -22,3 +22,5 @@ if __name__ == '__main__':
 
     for state in filter_users:
         print("{}: {}".format(state.id, state.name))
+
+    session.close()
