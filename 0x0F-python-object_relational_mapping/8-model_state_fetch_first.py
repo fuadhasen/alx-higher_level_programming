@@ -17,12 +17,11 @@ if __name__ == '__main__':
 
     Session = sessionmaker(bind=engine)
     session = Session()
-    filter_users = session.query(State).limit(1).all()
+    first_usr = session.query(State).first()
 
-    if not filter_users:
+    if not first_usr:
         print()
     else:
-        for state in filter_users:
-            print("{}: {}".format(state.id, state.name))
+        print("{}: {}".format(first_usr.id, first_usr.name))
 
     session.close()
