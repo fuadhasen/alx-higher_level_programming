@@ -20,7 +20,7 @@ if __name__ == '__main__':
     cur = db.cursor()
     query = """
         SELECT * FROM states
-        where name = "{}"
+        where BINARY name = "{}"
         order by states.id
     """.format(statename)
 
