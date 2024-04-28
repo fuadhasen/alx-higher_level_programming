@@ -24,7 +24,7 @@ if __name__ == '__main__':
     """)
     res = cur.fetchall()
     for row in res:
-        if row[1].startswith('N');
+        if row[1].startswith('N'):
             print(row)
     cur.close()
     db.close()
