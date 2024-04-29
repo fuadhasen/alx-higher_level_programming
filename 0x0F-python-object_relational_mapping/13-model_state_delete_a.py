@@ -1,28 +1,32 @@
 #!/usr/bin/python3
-""" update the name of a State object from the database """
+"""This module delete state object contain a using ORM """
 
-if __name__ == "__main__":
-    from sys import argv
+
+if __name__ == '__main__':
+    import sys
     from model_state import Base, State
-    from sqlalchemy import (create_engine)
+    from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
 
-    user = argv[1]
-    passwd = argv[2]
-    db_name = argv[3]
+    user_name = sys.argv[1]
+    user_passwd = sys.argv[2]
+    user_DB = sys.argv[3]
 
-    url = f"mysql+mysqldb://{user}:{passwd}@localhost:3306/{db_name}"
-
-    engine = create_engine(url)
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
+        user_name, user_passwd, user_DB
+    ))
 
     Session = sessionmaker(bind=engine)
     session = Session()
+    filter_users = session.query(State).order_by(State.id).all()
 
-    query_result = session.query(State).all()
-
-    for row in query_result:
-        if 'a' in row.name:
-            session.delete(row)
-
+    for state in filter_users:
+        flag = False
+        for char in state.name:
+            if char == 'a':
+                flag = True
+                break
+        if flag is True:
+            session.delete(state)
     session.commit()
     session.close()
