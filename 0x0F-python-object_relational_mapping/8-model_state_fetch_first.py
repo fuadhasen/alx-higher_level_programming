@@ -20,7 +20,7 @@ if __name__ == '__main__':
     first_usr = session.query(State).first()
 
     if not first_usr:
-        print()
+        print("Nothing")
     else:
         print("{}: {}".format(first_usr.id, first_usr.name))
 
