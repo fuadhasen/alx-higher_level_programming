@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module list all state objcet using ORM """
+"""This module list state object contain a using ORM """
 
 
 if __name__ == '__main__':
