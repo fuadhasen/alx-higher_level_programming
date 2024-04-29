@@ -21,12 +21,7 @@ if __name__ == '__main__':
     filter_users = session.query(State).order_by(State.id).all()
 
     for state in filter_users:
-        flag = False
-        for char in state.name:
-            if char == 'a':
-                flag = True
-                break
-        if flag is True:
+        if 'a' in state.name:
             session.delete(state)
-    session.commit()
+        session.commit()
     session.close()
