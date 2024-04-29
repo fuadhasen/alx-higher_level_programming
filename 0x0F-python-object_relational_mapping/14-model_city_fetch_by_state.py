@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" this module is near the cope."""
+"""The module provide city and state ."""
 
 import sys
 from sqlalchemy import create_engine
