@@ -1,26 +1,25 @@
 #!/usr/bin/python3
-""" Changes the name of a State object from DB """
+"""This module update name state object using ORM """
 
-if __name__ == "__main__":
-    from sys import argv
-    from model_state import Base, State
-    from sqlalchemy import (create_engine)
-    from sqlalchemy.orm import sessionmaker
+import sys
+from model_state import Base, State
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
-    user = argv[1]
-    passwd = argv[2]
-    db_name = argv[3]
+if __name__ == '__main__':
+    user_name = sys.argv[1]
+    user_passwd = sys.argv[2]
+    user_DB = sys.argv[3]
 
-    url = f"mysql+mysqldb://{user}:{passwd}@localhost:3306/{db_name}"
-
-    engine = create_engine(url)
+    engine = create_engine("mysql+mysqldb://{}:{}@localhost/{}"
+                           .format(user_name, user_passwd, user_DB),
+                           pool_pre_ping=True)
 
     Session = sessionmaker(bind=engine)
     session = Session()
+    filter_users = session.query(State).filter(State.id == 2).all()
 
-    changed_state = session.query(State).filter(State.id == 2).one()
-
-    changed_state.name = "New Mexico"
-
+    filter_users[0].name = "New Mexico"
     session.commit()
+
     session.close()
