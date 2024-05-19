@@ -1,1 +1,0 @@
-JS-object_scope_closure
