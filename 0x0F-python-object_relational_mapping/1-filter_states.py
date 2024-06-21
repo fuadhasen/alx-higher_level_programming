@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""python script that list all states from hbtn_0e_0_usa db"""
+"""python script that list all states from hbtn_0e_0_usa database"""
 import MySQLdb
 from sys import argv
 
