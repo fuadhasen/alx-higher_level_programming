@@ -2,7 +2,7 @@
 import sys
 import MySQLdb
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     mysql_usrs = sys.argv[1]
     mysql_pwd = sys.argv[2]
     mydb = sys.argv[3]
@@ -20,3 +20,5 @@ if __name__ == '__main__':
     rows = cursor.fetchall()
     for row in rows:
         print(row)
+
+    cursor.close()
