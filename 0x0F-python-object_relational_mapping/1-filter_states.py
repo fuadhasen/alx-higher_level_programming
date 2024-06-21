@@ -15,7 +15,8 @@ if __name__ == "__main__":
                          db=mydb)
 
     cursor = db.cursor()
-    query = """SELECT * FROM `states`
+    query = """
+            SELECT * FROM `states`
             where LEFT(`name`, 1) = 'N'
             ORDER BY states.id
             """
