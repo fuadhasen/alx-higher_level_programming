@@ -18,7 +18,7 @@ if __name__ == "__main__":
     cursor = db.cursor()
     query = """
             SELECT * FROM `states`
-            where name = '{}'
+            WHERE name = '{}'
             ORDER BY states.id
             """.format(state)
     cursor.execute(query)
