@@ -9,10 +9,10 @@ if __name__ == "__main__":
     mydb = argv[3]
 
     db = MySQLdb.connect(host='localhost',
-            port=3306,
-            user=mysql_usrs,
-            passwd=mysql_pwd,
-            db=mydb)
+                         port=3306,
+                         user=mysql_usrs,
+                         passwd=mysql_pwd,
+                         db=mydb)
 
     cursor = db.cursor()
     query = "SELECT * FROM `states` ORDER BY states.id"
