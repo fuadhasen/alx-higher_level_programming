@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""python script that list all states from hbtn_0e_0_usa database"""
+"""python script that filter states from hbtn_0e_0_usa database"""
 import MySQLdb
 from sys import argv
 
@@ -17,13 +17,14 @@ if __name__ == "__main__":
     cursor = db.cursor()
     query = """
             SELECT * FROM `states`
-            where LEFT(name, 1) = 'N'
             ORDER BY states.id
             """
     cursor.execute(query)
 
     rows = cursor.fetchall()
     for row in rows:
-        print(row)
+        if row[1].startswith('N'):
+            print(row)
+
 
     cursor.close()
