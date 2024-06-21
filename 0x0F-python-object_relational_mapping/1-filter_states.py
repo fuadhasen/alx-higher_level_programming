@@ -17,7 +17,7 @@ if __name__ == "__main__":
     cursor = db.cursor()
     query = """
             SELECT * FROM `states`
-            where LEFT(`name`, 1) = 'N'
+            where LEFT(name, 1) = 'N'
             ORDER BY states.id
             """
     cursor.execute(query)
@@ -27,4 +27,3 @@ if __name__ == "__main__":
         print(row)
 
     cursor.close()
-    db.close()
