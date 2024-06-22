@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""python script sql injection free from hbtn_0e_0_usa database"""
+"""python script  cities_by_state from hbtn_0e_0_usa database"""
 import MySQLdb
 from sys import argv
 
