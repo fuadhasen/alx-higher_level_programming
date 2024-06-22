@@ -36,6 +36,5 @@ if __name__ == "__main__":
             print(row[0] + ', ', end='')
         else:
             print(row[0])
-    print()
     cursor.close()
     db.close()
