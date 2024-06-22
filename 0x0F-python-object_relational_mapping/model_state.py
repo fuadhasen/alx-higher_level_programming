@@ -1,7 +1,11 @@
 #!/usr/bin/python3
-import SQLAlchemy
-from SQLAlchemy import Column, String, Integer
-from SQLAlchemy.ext.declarative import declarative_base
+
+from sqlalchemy import Column, String, Integer
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+
+engine = create_engine('mysql+mysqldb://root:@localhost:3306/')
 
 Base = declarative_base()
 
