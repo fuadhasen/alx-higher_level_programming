@@ -24,10 +24,11 @@ if __name__ == "__main__":
             WHERE name = '{}'
             ORDER BY states.id
             """.format(state_name)
+
     cursor.execute(query)
 
     rows = cursor.fetchall()
     for row in rows:
         print(row)
     cursor.close()
-
+    db.close()
