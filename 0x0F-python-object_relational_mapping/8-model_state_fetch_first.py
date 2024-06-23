@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" python script that fetch first row """
 
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import (create_engine)
