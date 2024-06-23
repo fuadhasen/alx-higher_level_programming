@@ -1,12 +1,10 @@
 #!/usr/bin/python3
 
-import sqlalchemy
-import sys
-from model_state import Base, State
-from sqlalchemy import Column, String, Integer
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
+import sys
+from model_state import Base, State
 
 if __name__ == "__main__":
     user = sys.argv[1]
