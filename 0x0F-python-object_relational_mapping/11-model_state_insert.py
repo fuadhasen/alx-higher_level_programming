@@ -10,7 +10,6 @@ if __name__ == "__main__":
     user = sys.argv[1]
     pwd = sys.argv[2]
     mydb = sys.argv[3]
-    
 
     engine = create_engine(
         f'mysql+mysqldb://{user}:{pwd}@localhost:3306/{mydb}')
