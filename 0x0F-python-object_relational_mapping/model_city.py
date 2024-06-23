@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" schema for city table """
 
 from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import Session
