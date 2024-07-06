@@ -21,7 +21,7 @@ if __name__ == "__main__":
     cursor = db.cursor()
     query = """
             SELECT * FROM `states`
-            WHERE name = '{}'
+            WHERE BINARY name = '{}'
             ORDER BY states.id
             """.format(state_name)
 

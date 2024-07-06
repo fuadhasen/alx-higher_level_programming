@@ -1,17 +1,15 @@
 #!/usr/bin/python3
+""" python script for modeling state """
 
-from sqlalchemy import Column, String, Integer
-from sqlalchemy.orm import Session
-from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, String, Integer
 
-engine = create_engine('mysql+mysqldb://root:@localhost:3306/')
 
 Base = declarative_base()
 
 
 class State(Base):
-    """ state tabel schema """
+    """ state tabele schema """
     __tablename__ = 'states'
     id = Column(Integer,
                 primary_key=True,
