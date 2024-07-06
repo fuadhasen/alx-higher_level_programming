@@ -1,3 +1,3 @@
 #!/bin/bash
 #script to cURL only methods
-curl -sI "$1" | grep -i "Allow: .*" | awk '{print $2}'
+curl -sI -X OPTIONS "$1" | grep 'Allow' | cut -d ' ' -f 2-
