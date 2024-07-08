@@ -9,4 +9,3 @@ if __name__ == "__main__":
     with urlopen(req) as response:
         header_value = response.getheader('X-Request-Id')
     print(header_value)
-
