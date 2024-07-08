@@ -12,5 +12,4 @@ if __name__ == "__main__":
     req = Request(sys.argv[1], data=data)
 
     with urlopen(req) as response:
-        content = response.read()
-    print("Your email is: {}".format(content.decode('utf-8')))
+        print(response.read().decode('utf-8'))
