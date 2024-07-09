@@ -12,7 +12,8 @@ if __name__ == "__main__":
     headers = {
         'Accept': 'application/vnd.github.v3+json'
     }
-    res = requests.get('https://api.github.com/user', auth=auth, headers=headers)
+    res = requests.get('https://api.github.com/user', auth=auth,
+                       headers=headers)
     # parse the json response and return python dict
     response = res.json()
     print("{}".format(response.get('id')))
