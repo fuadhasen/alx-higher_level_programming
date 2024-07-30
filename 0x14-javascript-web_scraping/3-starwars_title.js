@@ -9,6 +9,6 @@ request(url, function (error, response, body) {
     console.error(`code: ${error.message}`);
   } else {
     const parsedBody = JSON.parse(body);
-    console.log(`code: ${parsedBody.title}`);
+    console.log(`${parsedBody.title}`);
   }
 });
