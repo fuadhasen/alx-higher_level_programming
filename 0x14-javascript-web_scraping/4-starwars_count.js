@@ -3,7 +3,7 @@
 const args = process.argv.slice(2);
 const request = require('request');
 const url = args[0];
-const charUrl = 'https://swapi-api.alx-tools.com/api/people/18/';
+const charUrl = '18';
 let count = 0;
 
 request(url, function (error, response, body) {
@@ -15,7 +15,7 @@ request(url, function (error, response, body) {
 
     lists.forEach(item => {
       item.characters.forEach(Actors => {
-        if (Actors === charUrl) {
+        if (Actors.includes(charUrl)) {
           count += 1;
         }
       });
