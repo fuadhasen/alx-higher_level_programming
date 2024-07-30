@@ -4,6 +4,7 @@ const args = process.argv.slice(2);
 const request = require('request');
 const url = args[0];
 const charUrl = 'https://swapi-api.alx-tools.com/api/people/18/';
+let count = 0;
 
 request(url, function (error, response, body) {
   if (error) {
@@ -11,7 +12,6 @@ request(url, function (error, response, body) {
   } else {
     const parsedBody = JSON.parse(body);
     const lists = parsedBody.results;
-    let count = 0;
 
     for (let i = 0; i < lists.length; i++) {
       const charList = lists[i].characters;
@@ -21,6 +21,6 @@ request(url, function (error, response, body) {
         }
       }
     }
-    console.log(count);
   }
+  console.log(count);
 });
