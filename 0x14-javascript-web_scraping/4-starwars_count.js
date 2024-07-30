@@ -13,14 +13,13 @@ request(url, function (error, response, body) {
     const parsedBody = JSON.parse(body);
     const lists = parsedBody.results;
 
-    for (let i = 0; i < lists.length; i++) {
-      const charList = lists[i].characters;
-      for (let j = 0; j < charList.length; j++) {
-        if (charList[j] === charUrl) {
+    lists.forEach(item => {
+      item.characters.forEach(Actors => {
+        if (Actors === charUrl) {
           count += 1;
         }
-      }
-    }
+      });
+    });
   }
   console.log(count);
 });
