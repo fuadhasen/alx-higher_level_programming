@@ -7,7 +7,7 @@ const charUrl = 'https://swapi-api.alx-tools.com/api/people/18/';
 
 request(url, function (error, response, body) {
   if (error) {
-    console.error(`code: ${error.message}`);
+    console.log(error);
   } else {
     const parsedBody = JSON.parse(body);
     const lists = parsedBody.results;
